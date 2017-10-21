@@ -25,7 +25,7 @@ else:
 		comment_list = list(filter(None, comment_list))
 
 print("Grabbing the last 10 comments")
-for comment in run.subreddit('DarkestDungeon').comments(limit=10)
+for comment in run.subreddit('DarkestDungeon').comments(limit=10):
 	if comment.id not in comment_list and "resolve is tested..." in comment.body:
 		print("Comments found!")
 		comment.reply("#" + random.choice(status))
