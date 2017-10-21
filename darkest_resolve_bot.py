@@ -4,51 +4,40 @@ import time
 import random
 import os
 
-def login_reddit():
-	run = praw.Reddit(username = config.username,
-				password = config.password,
-				client_id = config.client_id,
-				client_secret = config.client_secret,
-				user_agent = config.user_agent) 
-	return run
-				
-def run_darkest_bot(run, status, comment_list):
-	print("Grabbing comments")
-	for comment in run.subreddit('DarkestDungeon').comments(limit=30):
-		if  "resolve is tested..." in comment.body and comment.id not in comment_list:
-			print("string: \"resolve is tested...\" found!")
-			comment.reply("#" + random.choice(status))
-			print("Writing comment id \"" + comment.id + "\" to comment_list")
-			comment_list.append(comment.id)
+run = praw.Reddit(username = config.username,
+			password = config.password,
+			client_id = config.client_id,
+			client_secret = config.client_secret,
+			user_agent = config.user_agent) 
 			
-			with open("comment_list.txt", "a") as f:
-				f.write(comment.id + "\n")
-				f.flush()
-				
-			#time.sleep(60)
-				
+status = ['Paranoid', 'Selfish', 'Irrational', 
+		  'Fearful', 'Hopeless', 'Abusive', 
+		  'Masochistic', 'Rapturous', 'Powerful',
+		  'Courageous', 'Stalwart', 'Vigorous',
+		  'Focused']
+
+if not os.path.isfile("comment_list.txt"):
+	comment_list = []
+else:
+	with open("comment_list.txt", "r") as f:
+		comment_list = f.read()
+		comment_list = comment_list.split("\n")
+		comment_list = list(filter(None, comment_list))
+
+print("Grabbing the last 10 comments")
+for comment in run.subreddit('DarkestDungeon').comments(limit=10)
+	if comment.id not in comment_list and "resolve is tested..." in comment.body:
+		print("Comments found!")
+		comment.reply("#" + random.choice(status))
+		print("Sending message and recording comment id.")
+		comment_list.append(comment.id)
+			
+	with open("comment_list.txt", "w") as f:
+		for 
+		f.write(comment.id + "\n")			
 	
-	print("Taking a break")
+	print("Taking a break...")
 	time.sleep(30)
-			
-def status_list():
-	status = ['Paranoid', 'Selfish', 'Irrational', 
-			  'Fearful', 'Hopeless', 'Abusive', 
-			  'Masochistic', 'Rapturous', 'Powerful',
-			  'Courageous', 'Stalwart', 'Vigorous',
-			  'Focused']
-	return status
-	
-def replies_list():
-	if not os.path.isfile("comment_list.txt"):
-		comment_list = []
-	else:
-		with open("comment_list.txt", "r") as f:
-			comment_list = f.read()
-			comment_list = comment_list.split("\n")
-			comment_list = list(filter(None, comment_list))
-	
-	return comment_list
 
 
 run = login_reddit()
