@@ -32,8 +32,7 @@ for comment in run.subreddit('DarkestDungeon').comments(limit=10):
 		print("Sending message and recording comment id.")
 		comment_list.append(comment.id)
 			
-	with open("comment_list.txt", "w") as f:
-		for 
+	with open("comment_list.txt", "w") as f: 
 		f.write(comment.id + "\n")			
 	
 	print("Taking a break...")
