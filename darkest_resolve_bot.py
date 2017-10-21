@@ -24,16 +24,15 @@ else:
 		comment_list = comment_list.split("\n")
 		comment_list = list(filter(None, comment_list))
 
-print("Grabbing the last 10 comments")
 for comment in run.subreddit('DarkestDungeon').comments(limit=10):
+	print("Grabbing the last 10 comments")
 	if comment.id not in comment_list and "resolve is tested..." in comment.body:
 		print("Comments found!")
 		comment.reply("#" + random.choice(status))
 		print("Sending message and recording comment id.")
 		comment_list.append(comment.id)
-			
-	with open("comment_list.txt", "w") as f: 
-		f.write(comment.id + "\n")			
+		with open("comment_list.txt", "w") as f: 
+			f.write(comment.id + "\n")			
 	
 	print("Taking a break...")
 	time.sleep(30)
