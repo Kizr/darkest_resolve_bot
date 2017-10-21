@@ -23,6 +23,7 @@ def run_darkest_bot(run, status, comment_list):
 			
 			with open("comment_list.txt", "a") as f:
 				f.write(comment.id + "\n")
+				f.flush()
 				
 			#time.sleep(60)
 				
