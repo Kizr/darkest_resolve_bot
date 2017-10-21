@@ -17,7 +17,7 @@ def run_darkest_bot(run, status, comment_list):
 	for comment in run.subreddit('DarkestDungeon').comments(limit=30):
 		if  "resolve is tested..." in comment.body.lower() and comment.id not in comment_list:
 			print("Matching comment found!")
-			comment.reply("#" + random.choice(status) + "\n\n ^^I am a bot, and this action was performed automatically. Please contact /u/Frozen_Aurora if you have any questions or concerns.")
+			comment.reply("#" + random.choice(status) + "\n\n ^^(I am a bot, and this action was performed automatically. Please contact /u/Frozen_Aurora if you have any questions or concerns.)")
 			print("Writing reply and updating comment_list")
 			comment_list.append(comment.id)
 			
