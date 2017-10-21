@@ -24,7 +24,7 @@ def run_darkest_bot(run, status, comment_list):
 			with open("comment_list.txt", "a") as f:
 				f.write(comment.id + "\n")
 				
-			time.sleep(600)
+			#time.sleep(60)
 				
 	
 	print("Taking a break")
