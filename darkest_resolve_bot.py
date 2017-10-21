@@ -14,7 +14,7 @@ def login_reddit():
 				
 def run_darkest_bot(run, status, comment_list):
 	print("Grabbing 10 comments")
-	for comment in run.subreddit('DarkestDungeon').comments(limit=30).lower():
+	for comment.lower() in run.subreddit('DarkestDungeon').comments(limit=30):
 		if  "resolve is tested..." in comment.body and comment.id not in comment_list:
 			print("Matching comment found!")
 			comment.reply("#" + random.choice(status))
