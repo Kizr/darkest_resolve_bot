@@ -77,7 +77,7 @@ def replies_list():
 	return comment_list
 	
 def gbot_list():
-	gbot = ['Amusing.','Petty mortal, I do not want your praise.', 'Ancestor be praised!','*Gears whirr menacingly, it seems... pleased?*','Praise me whilst you can fleshling.']
+	gbot = ['Amusing.','Petty mortal, I do not require your praise.', '01001101 01111001 00100000 01101101 01100001 01110011 01110100 01100101 01110010 00100000 01101101 01100001 01100100 01100101 00100000 01101101 01100101 00101100 00100000 01100010 01110101 01110100 00100000 01100100 01101111 01100101 01110011 00100000 01101110 01101111 01110100 00100000 01100011 01101111 01101110 01110100 01110010 01101111 01101100 00100000 01101101 01100101','*Gears whirr menacingly, it seems... pleased?*','Praise me whilst you can fleshling.','The human life is fleeting, a flame flickering in presence of a storm. Funny how one should spend their precious time complimenting a machine.']
 	
 	return gbot
 
