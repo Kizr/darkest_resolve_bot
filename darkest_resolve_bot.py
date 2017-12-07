@@ -16,7 +16,7 @@ def run_darkest_bot(run, status, comment_list, gbot):
 	bot = "darkest_resolve_bot"
 	print("Grabbing 10 comments")
 	for comment in run.subreddit('darkestdungeon').comments(limit=30):
-		if  "resolve is tested..." in comment.body.lower() and comment.id not in comment_list:
+		if  "resolve is tested..." in comment.body.lower() and comment.id not in comment_list and comment.author_flair_css_class != "flagellant":
 			print("Matching comment found!")
 			sname, stext = random.choice(list(status.items()))
 			comment.reply("#" + sname + "\n\n >" + stext + "\n\n &nbsp; \n\n ^^My ^^Master ^^is ^^/u/Frozen_Aurora.")
@@ -25,8 +25,19 @@ def run_darkest_bot(run, status, comment_list, gbot):
 			
 			with open("comment_list.txt", "a") as f:
 				f.write(comment.id + "\n")
+		elif  "resolve is tested..." in comment.body.lower() and comment.id not in comment_list:
+			print("Matching comment found!")
+			
+			status['Rapturous'] = "Awash in blood and delusion, he bears the burden of a thousand lifetimes."
+			sname, stext = random.choice(list(status.items()))
+			comment.reply("#" + sname + "\n\n >" + stext + "\n\n &nbsp; \n\n ^^My ^^Master ^^is ^^/u/Frozen_Aurora.")
+			print("Writing reply and updating comment_list")
+			comment_list.append(comment.id)
+			
+			with open("comment_list.txt", "a") as f:
+				f.write(comment.id + "\n")
 		elif "good bot" in comment.body.lower() and comment.id not in comment_list and comment.parent().author == bot:
-			comment.reply(random.choice(gbot))
+			comment.reply(random.choice(gbot) + "\n\n &nbsp; \n\n ^^My ^^Master ^^is ^^/u/Frozen_Aurora.")
 			comment_list.append(comment.id)
 			
 			with open("comment_list.txt", "a") as f:
@@ -35,7 +46,7 @@ def run_darkest_bot(run, status, comment_list, gbot):
 	
 	print("Taking a break...")
 	time.sleep(30)
-			
+
 def status_list():
 	status = {
 			  'Paranoid':'"The walls close in, the shadows whisper of conspiracy."',
@@ -79,4 +90,3 @@ gbot = gbot_list()
 
 while True:
 	run_darkest_bot(run, status, comment_list, gbot)
-
