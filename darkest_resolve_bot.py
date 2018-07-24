@@ -47,7 +47,7 @@ def status_list():
 			  'Abusive':'"Frustration, and fury! ...More destructive than a hundred cannons."',
 			  'Masochistic':'"Those who covet injury, find it in no short supply."',
 			  'Rapturous':'"Awash in blood and delusion, he bears the burden of a thousand lifetimes."',
-			  'Refracted':'“Colors spin! Whispers taunt and reveal!”',
+			  'Refracted':'"Colors spin! Whispers taunt and reveal!"',
 			  'Powerful':'"Anger is power - unleash it!"',
 			  'Courageous':'"A moment of valor shines brightest against a backdrop of despair."',
 			  'Stalwart':'"Many fall in the face of chaos, but not this one!... not today."',
